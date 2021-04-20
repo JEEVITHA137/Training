@@ -1,0 +1,25 @@
+{
+  "name": "hapi_basics",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@hapi/boom": "^7.4.11",
+    "handlebars": "^4.7.7",
+    "hapi": "^16.1.0",
+    "hapi-auth-basic": "^4.2.0",
+    "hapi-geo-locate": "^2.2.1",
+    "inert": "^4.2.1",
+    "path": "^0.12.7",
+    "pg": "^8.6.0",
+    "postgres": "^1.0.2",
+    "sequelize": "^6.6.2",
+    "vision": "^4.1.1"
+  },
+  "devDependencies": {}
+}
