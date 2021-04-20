@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<body>
+<div id="root">
+    <div id="root-content">Hello World</div>
+</div>
+  
+  <div id="contents">
+  <ul class="numbers">
+      <li>one</li>
+      <li>two</li>
+  </ul>
+  <ul class="numbers"> 
+    <li>eleven</li>
+    <li>twelve</li>
+  </ul>
+  </div>
+
+  <div id="hello">Hello World!</div>
+  
+
+  <a href="http://www.google.com">...</a>
+  <a href="http://amazon.com">...</a>
+
+
+  <div hidden> the hidden object</div>
+  <div id='hide'> hidden by script</div>
+  <div id='blink'>Hidden in seconds</div>
+
+  <div id="htmlattribute" about="attributetype"></div>
+  <script>
+    let elem = document.getElementById('root');
+    elem.style.background = 'cyan';
+
+    //also
+    //root.style.background = 'cyan';
+
+    //queryselectorall -- static collection
+    let element = document.querySelectorAll('li:last-child')
+    for(let i of element)
+    {
+        console.log(i.innerHTML);
+    }
+       
+    //matches
+    for(let i of document.body.children)
+    {
+        if(i.matches('a[href$="google.com"]'))
+        {
+            console.log("The matched pattern " + i.href)
+        }
+    }
+
+    //chapter
+    let chapter = document.querySelector('.numbers');
+    //alert(chapter.closest('.contents'))
+
+    chapter.innerHTML += '<div>Jeevitha</div>'
+
+    // alert( document.body instanceof HTMLBodyElement ); // true
+    // alert( document.body instanceof HTMLElement ); // true
+    // alert( document.body instanceof Element ); // true
+    // alert( document.body instanceof Node ); // true
+    // alert( document.body instanceof EventTarget ); // true
+
+    console.dir(document.body)
+
+    //outerHTML -- Replace in the DOM
+    let div = document.getElementById('hello');
+   
+    div.outerHTML = '<p>Replaced by OuterHTML</p>'
+    // alert(div.outerHTML);
+
+    //textcontent --  only text, minus all <tags>
+    console.log(contents.textContent)
+
+    //hidden
+    hide.hidden = true;
+
+    setInterval(()=>blink.hidden=!blink.hidden,1000);
+
+    //html attribute
+    alert(htmlattribute.getAttribute('about'));
+    htmlattribute.setAttribute('Test',123)
+    alert(htmlattribute.outerHTML);
+    for(let i of htmlattribute.attributes)
+    {
+        alert(`${i.name} = ${i.value}`)
+    }
+  </script>
+
+</body>
+</html>

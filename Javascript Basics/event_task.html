@@ -1,0 +1,33 @@
+<html>
+
+  <head>
+  <style>
+  body {
+    background-color: #1d2126;
+    color: white;
+  }
+
+  li {
+    list-style: none;
+  }
+
+  </style>
+  </head>
+
+  <body>
+    <ul>
+      <li><button value="John">John</button></li>
+      <li><button value="Donna">Donna</button></li>
+      <li><button value="Devon">Devon</button></li>
+      <li><button value="Melissa">Melissa</button></li>
+    </ul>
+    <script>
+    document.body.onclick = function(e){
+	if(e.target.tagName != 'BUTTON')	return;
+  
+    e.target.innerHTML = "<h3>"+ e.target.innerHTML +"</h3>"
+    }
+    </script>
+  </body>
+
+</html>

@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+</head> 
+<body>
+    <button id="counter">Closure Conuter</button>
+    <button id="eventLoop">Block the Event Loop</button>
+    <p id="countervalue">0</p>
+    <script>
+        var Increment = (function(){
+            var value = 0;
+            return function()
+            {
+                value +=1;
+                return value;
+            }
+        })();
+
+        counter.onclick = function(){
+            document.getElementById('countervalue').innerHTML = Increment();
+        } 
+
+        let a = true;
+        let c = 0;
+
+        eventLoop.onclick = function(){
+            
+            setTimeout(()=>{
+                alert("hi")
+                a = false;
+                // clearInterval(id)
+            },2000);
+            
+            while(a)
+            {
+                console.log(c++)
+            }
+
+            // let id = setInterval(()=>{
+            //     console.log(c++)
+            // },200)
+
+            
+            
+        }
+    </script>
+</body>
+</html>

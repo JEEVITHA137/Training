@@ -1,0 +1,93 @@
+<html>
+<body>
+    <button id="pattern">Promise pattern</button>
+    <h1 id="antiPattern">Promise Antipattern</h1>
+    <button id="callbackButton">Callback</button>
+    <button id="asyncButton">Async/Await</button>
+<script>
+    // pattern
+    
+    Promise.all([
+        new Promise((resolve, reject) => setTimeout(() => resolve("Hi"), 3000)),
+        new Promise((resolve, reject) => setTimeout(() => resolve("Everyone!"), 2000)),
+        new Promise((resolve, reject) => setTimeout(() => resolve("Have a nice day"), 1000))
+    ]).then(alert)
+    .catch(alert)
+
+    Promise.race([
+        new Promise(resolve => setTimeout(() => resolve("Hi"), 3000)),
+        new Promise(resolve => setTimeout(() => resolve("Everyone"), 1000)),
+        new Promise(resolve => setTimeout(() => resolve("Have a nice day"), 1000))
+    ]).then(alert)
+
+    function multipy(a){
+        if(typeof a !== "number")
+        {
+            return Promise.reject(new Error("Argument of type number is expected."))
+        }
+        return Promise.resolve(a*a);
+    }
+
+    pattern.onclick = function(){
+        multipy(4)
+       .then((value) => pattern.innerHTML = value)
+       .catch((error)=>alert(error))    ;
+    }
+
+    new Promise((resolve, reject) => {
+    resolve("ok");
+    }).then((result) => {
+      b();
+    }).catch(alert);
+
+    //call back
+    function multipyCallback(a,callback){
+        if(typeof a !== "number")
+        {
+            throw new Error("Argument of type number is expected.");
+            return;
+        }
+        const result = a*a;
+        callback(result);
+    }
+
+    let callback = (result) => {
+        alert('Result : ' + result)
+    }
+    
+    callbackButton.onclick = () => { multipyCallback(5,callback) }
+       
+    //async
+    let value = 7;
+    asyncButton.onclick = async function() {
+        let promise = new Promise((resolve, reject) => {
+            if(typeof value !== "number")
+            {
+                reject(new Error("Argument of type number is expected."));   
+            }
+            resolve(value*value)
+        });
+
+        let result = await promise; 
+
+        alert(result)
+    }
+
+    
+    // anti-pattern
+    new Promise((resolve,reject) => {
+        resolve(
+            new Promise((resolve,reject) => {
+                resolve(
+                    new Promise((resolve,reject) => {
+                        resolve("Works Fine")
+                    })
+                )
+            })
+        )
+    }).then(message => antiPattern.innerHTML=message)
+    .catch(error=>alert(error))
+    
+</script>
+</body>
+</html>

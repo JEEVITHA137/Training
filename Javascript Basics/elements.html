@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<body>
+
+  <ul>
+    <li>Information</li>
+  </ul>
+
+  <script>
+    alert(document.body.childNodes.length);
+
+    for (let i = 0; i < document.body.childNodes.length; i++) {
+      alert(document.body.childNodes[i]);
+       // Text, DIV, Text, UL, ..., SCRIPT
+    }
+
+    //loop iterates over all enumerable properties
+    for (let prop in document.body.childNodes) alert(prop);
+
+
+    for (let elem of document.body.children) {
+      alert(elem); // DIV, UL, DIV, SCRIPT
+    }
+    
+  </script>
+  <div>The loop is end</div>
+</body>
+</html>

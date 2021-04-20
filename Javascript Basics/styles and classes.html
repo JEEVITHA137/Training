@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+    <style>
+        body{
+            color: aqua;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body class='main page'>
+    <h1>Welcome Everyone</h1>
+    <div id="div">Button</div>
+    <script>
+        //classList = to add/remove/toggle/contains in class
+        document.body.classList.add('article');
+        // alert(document.body.className)
+
+        // for(let i of document.body.classList)
+        // {
+        //     alert(i);
+        // }
+
+        document.body.style.display = "none";
+        setInterval(()=>document.body.style.display = "",1000);
+
+        div.style.cssText=`color: red !important;
+            background-color: yellow;
+            width: 100px;
+            text-align: center;`;
+
+        let style = getComputedStyle(document.body);
+        alert(style.marginTop);
+        alert(style.color)
+    </script>
+</body>
+</html>

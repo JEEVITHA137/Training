@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+<head>
+<style>
+    .menu .title{
+        cursor:pointer;
+      }
+  
+      .menu ul{
+        margin: 0;
+        list-style: none;
+        padding-left: 20px;
+        display: none;
+      }
+  
+    .menu .title::before{
+      content:'▶';
+      color:green; 
+    }
+  
+    .menu .open .title::before{
+      content:'▼';
+    }
+  
+     .menu.open ul{
+        display:block;
+      }
+</style>  
+</head>
+<body>
+    <input id="button" type="button" onclick="alert('Welcome!')" value="HTML Button"></input>
+    <input id="button1" type="button" value="HTML+JS Button"></input>
+    <button onclick="alert(this.innerHTML)">Click Me(innerHTML)!</button>
+    <button id="eventobject">Click Me(Event Object)!</button>
+    <button id="objecthandlers">Click Me(Object Handlers)!</button>
+    <button id="hideitself">Click Me(Hide itself)!</button>
+
+    <div id="hider" class="menu">
+        <div class="title"> Sweeties (click me)!</div>
+        <ul>
+          <li>Cake</li>
+          <li>Donut</li>
+          <li>Honey</li>
+        </ul>
+    <div>
+      
+    <script>
+          var title = document.querySelector('.title')
+          var hider = document.getElementById('hider')
+      
+          title.onclick = function(){
+            hider.classList.toggle('open')
+          }
+      
+    </script>
+
+    <script>
+        function handler1(){
+            alert("Thanks!");
+        }
+
+        function handler2(){
+            alert("Thanks Again!");
+        }
+
+        button1.onclick = function(){
+            alert("Good Morning");
+        }
+        button1.addEventListener("click",handler1);
+        button1.addEventListener("click",handler2);
+
+        eventobject.onclick = function(event){
+            alert(event.type + "at" + event.currentTarget);
+            alert("Coordinates: " +event.clientX+":"+event.clientY)
+        }
+
+        class Menu{
+            handleEvent(event){
+                switch(event.type){
+                    case 'mousedown':
+                        objecthandlers.innerHTML = 'mouse button pressed'
+                        break;
+                    case 'mouseup':
+                        objecthandlers.innerHTML = 'mouse button released'
+                        break;
+                }
+            }
+        }
+
+        let menu = new Menu();
+        objecthandlers.addEventListener('mousedown',menu);
+        objecthandlers.addEventListener('mouseup',menu);
+
+        var hide = document.getElementById('hideitself');
+        hide.onclick = function(){
+            hide.hidden = true;
+        }
+    </script>
+</body>
+</html>
